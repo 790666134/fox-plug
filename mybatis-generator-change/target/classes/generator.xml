@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+  PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+  "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+	<!--数据库驱动 -->
+	<!-- <classPathEntry location="mysql-connector-java-5.1.41.jar"/> -->
+
+	<properties resource="jdbc.properties" />
+
+
+
+	<context id="iguan" targetRuntime="MyBatis3">
+		<!-- <plugin type="org.mybatis.generator.plugins.RowBoundsPlugin" /> -->
+
+		<plugin type="org.fox.plug.mybatis.generator.change.plugin.mysql.MySQLLimitPlugin" />
+
+
+		<commentGenerator>
+			<property name="suppressDate" value="true" />
+			<property name="suppressAllComments" value="true" />
+		</commentGenerator>
+		<jdbcConnection driverClass="${jdbc.driver}"
+			connectionURL="${jdbc.url}" userId="${jdbc.username}" password="${jdbc.password}">
+		</jdbcConnection>
+		<javaTypeResolver>
+			<property name="forceBigDecimals" value="false" />
+		</javaTypeResolver>
+		<!--生成Model类存放位置 -->
+		<javaModelGenerator targetPackage="${generator.model.path}"
+			targetProject="src">
+			<property name="enableSubPackages" value="true" />
+			<property name="trimStrings" value="true" />
+		</javaModelGenerator>
+		<!--生成映射文件存放位置 -->
+		<sqlMapGenerator targetPackage="${generator.mapping.path}"
+			targetProject="src">
+			<property name="enableSubPackages" value="true" />
+		</sqlMapGenerator>
+		<!--生成Dao类存放位置 -->
+		<javaClientGenerator type="XMLMAPPER"
+			targetPackage="${generator.dao.path}" targetProject="src">
+			<property name="enableSubPackages" value="true" />
+		</javaClientGenerator>
+		
+		
+		
+		
+		<!--生成对应表及类名 -->
+		<table tableName="INFO_APP" domainObjectName="InfoApp"
+			enableCountByExample="true" enableUpdateByExample="true"
+			enableDeleteByExample="true" enableSelectByExample="true"
+			selectByExampleQueryId="true">
+			<!-- 在insert成功后，返回ID -->
+			<generatedKey column="id" sqlStatement="MySql" identity="true" />
+		</table>
+
+
+
+		<!-- View相关 -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	</context>
+</generatorConfiguration>
